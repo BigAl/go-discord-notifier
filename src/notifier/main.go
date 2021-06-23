@@ -40,8 +40,9 @@ func Handler(ctx context.Context, event events.CloudWatchEvent) {
 		return
 	}
 
-	embed := godiscord.NewEmbed("AWS Event", string(event.Source), "https://stackoverflow.com/questions/53935198/in-my-discord-webhook-i-am-getting-the-error-embeds-0")
-	embed.AddField("This is a field", "This is the value", true)
+	embed := godiscord.NewEmbed("AWS Event Type", string(event.DetailType), "https://stackoverflow.com/questions/53935198/in-my-discord-webhook-i-am-getting-the-error-embeds-0")
+	embed.AddField("Account ID", string(event.AccountID), true)
+	embed.AddField("Raw Message Detail", string(event.Detail), true)
 	err := embed.SendToWebhook(WEBHOOKURL)
     if err != nil {
         log.Fatal(err)
