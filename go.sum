@@ -1,4 +1,6 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
+github.com/aiomonitors/godiscord v0.0.0-20200422003858-41242d4e5847 h1:Yxc0g65+HtqHRHCTv+Pij/BCznlcrW5YHySEFKuz8fU=
+github.com/aiomonitors/godiscord v0.0.0-20200422003858-41242d4e5847/go.mod h1:LXgHQsyfPhr3tpaib4yKCX7vaeSlAZSHfbb02DvXw5g=
 github.com/aws/aws-lambda-go v1.24.0 h1:bOMerM175hLqHLdF1Nonfv1NA20nTIatuC0HK8eMoYg=
 github.com/aws/aws-lambda-go v1.24.0/go.mod h1:jJmlefzPfGnckuHdXX7/80O3BvUUi12XOkbv4w9SGLU=
 github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d/go.mod h1:maD7wRr/U5Z6m/iR4s+kqSMx2CaBsrgA7czyZG/E6dU=
