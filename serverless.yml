@@ -1,4 +1,4 @@
-service: notifier
+service: discord-notifier
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -10,6 +10,9 @@ provider:
   runtime: go1.x
   lambdaHashingVersion: 20201221
   region: ap-southeast-2
+  versionFunctions: false
+  tracing:
+    lambda: true 
 
 package:
   patterns:
@@ -20,11 +23,18 @@ functions:
   discord-notifier:
     handler: bin/notifier
     events:
+# Sample EC2 event
+#      - cloudwatchEvent:
+#          event:
+#            source:
+#              - 'aws.ec2'
+#            detail-type:
+#              - 'EC2 Instance State-change Notification'
       - cloudwatchEvent:
           event:
             source:
-              - 'aws.ec2'
+              - 'aws.codepipeline'
             detail-type:
-              - 'EC2 Instance State-change Notification'
+              - 'CodePipeline Pipeline Execution State Change'
     environment:
       DISCORD_WEBHOOK_URL: ${env:DISCORD_WEBHOOK_URL}

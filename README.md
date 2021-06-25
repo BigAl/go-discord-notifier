@@ -17,7 +17,7 @@
 
 ## Deploy
 
-`DISCORD_WEBHOOK_URL` must be set to a valid discord webhook
+`DISCORD_WEBHOOK_URL` must be set to a valid discord webhook you can do this in `.env` file
 
 `make deploy`
 
@@ -27,12 +27,14 @@
 
 This you send a message to your channel
 
+## Delete/remove Stack
+
+`make remove`
+
 ## Todo
 
-- Add Cloudwatch Event rule
 - Code clean up
 - Tests
-- Do somethine about lambda versions [versionFunctions](https://www.serverless.com/framework/docs/providers/aws/guide/functions/) or [Plugin Prune](https://github.com/claygregory/serverless-prune-plugin) [Strategies](https://www.mode2.com/news/strategies-to-manage-aws-lambda-versions/)
 - Do a CDK Version
 
 ## Some helpful URLS
