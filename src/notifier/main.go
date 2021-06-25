@@ -1,18 +1,14 @@
 package main
 
 import (
-
 	"context"
-	"encoding/json"
-
-
-    "log"
-	"os"
 	"fmt"
+	"log"
+	"os"
 
+	"github.com/aiomonitors/godiscord"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/aiomonitors/godiscord"
 )
 
 // Response is of type APIGatewayProxyResponse since we're leveraging the
@@ -21,17 +17,9 @@ import (
 // https://serverless.com/framework/docs/providers/aws/events/apigateway/#lambda-proxy-integration
 type Response events.APIGatewayProxyResponse
 
-type DiscordMessage struct {
-	username    string          `json:"username"`
-	avatar_url  string          `json:"avatar_url"`
-	content 	string          `json:"content"`
-	embeds     	json.RawMessage `json:"detail"`
-}
-
 // Handler is our lambda handler invoked by the `lambda.Start` function call
 func Handler(ctx context.Context, event events.CloudWatchEvent) {
-		fmt.Printf("Detail = %s\n", event.Detail)
-
+	fmt.Printf("Detail = %s\n", event.Detail)
 
 	// Authentication Token pulled from environment variable DISCORD_WEBHOOK_URL
 	WEBHOOKURL := os.Getenv("DISCORD_WEBHOOK_URL")
@@ -44,9 +32,9 @@ func Handler(ctx context.Context, event events.CloudWatchEvent) {
 	embed.AddField("Account ID", string(event.AccountID), true)
 	embed.AddField("Raw Message Detail", string(event.Detail), true)
 	err := embed.SendToWebhook(WEBHOOKURL)
-    if err != nil {
-        log.Fatal(err)
-    }
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {
