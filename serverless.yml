@@ -45,6 +45,7 @@ functions:
             detail:
               build-status:
               - 'FAILED'
+      - cloudwatchEvent:
           event:
             source:
               - aws.codecommit
