@@ -37,15 +37,17 @@ functions:
 #            detail-type:
 #              - 'CodePipeline Action Execution State Change'
       - cloudwatchEvent:
+          description: Failed Builds
           event:
             source:
-              - 'aws.codebuild'
+              - aws.codebuild
             detail-type:
-              - 'CodeBuild Build State Change'
+              - CodeBuild Build State Change
             detail:
               build-status:
-              - 'FAILED'
+              - FAILED
       - cloudwatchEvent:
+          description: Changes to organization-formation repo
           event:
             source:
               - aws.codecommit
