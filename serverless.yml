@@ -30,11 +30,20 @@ functions:
 #              - 'aws.ec2'
 #            detail-type:
 #              - 'EC2 Instance State-change Notification'
+#      - cloudwatchEvent:
+#          event:
+#            source:
+#              - 'aws.codepipeline'
+#            detail-type:
+#              - 'CodePipeline Action Execution State Change'
       - cloudwatchEvent:
           event:
             source:
-              - 'aws.codepipeline'
+              - 'aws.codebuild'
             detail-type:
-              - 'CodePipeline Pipeline Execution State Change'
+              - 'CodeBuild Build State Change'
+            detail:
+              build-status:
+              - 'FAILED'
     environment:
       DISCORD_WEBHOOK_URL: ${env:DISCORD_WEBHOOK_URL}
