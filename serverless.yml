@@ -45,5 +45,13 @@ functions:
             detail:
               build-status:
               - 'FAILED'
+          event:
+            source:
+              - aws.codecommit
+            detail-type:
+              - CodeCommit Repository State Change
+            resources:
+              - arn:aws:codecommit:ap-southeast-2:731244687126:organization-formation
+
     environment:
       DISCORD_WEBHOOK_URL: ${env:DISCORD_WEBHOOK_URL}
