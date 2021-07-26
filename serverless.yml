@@ -46,6 +46,22 @@ functions:
             detail:
               build-status:
               - FAILED
+          inputTransformer:
+            inputPathsMap:
+              version: '$.version'
+              id: '$.id'
+              source: '$.source'
+              account: '$.account'
+              time: '$.time'
+              region: '$.region'
+              resources: '$.resources'
+              detail-type : '$.detail-type'
+              build-status: '$.detail.build-status'
+              project-name: '$.detail.project-name'
+              build-id: '$.detail.build-id'
+              logs: '$.detail.additional-information.logs.deep-link'
+            inputTemplate: '{"version": <version>, "id" : <id>, "detail-type": <detail-type>, "source": <source>, "account": <account>, "time": <time>, "region": <region>, "resources": <resources>, "detail": { "build-status": <build-status>, "project-name": <project-name>, "build-id": <build-id>, "logs-link": <logs> } }'
+        
       - cloudwatchEvent:
           description: Changes to organization-formation repo
           event:
